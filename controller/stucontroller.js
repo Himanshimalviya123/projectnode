@@ -1,23 +1,67 @@
+const stuModel=require("../models/module1");
 const homepage=(req,res)=>{
-    res.render("home")
+    res.render("home");
 }
-const inserpage=(req,res)=>{
-    res.render("insert")
+const insertpage=(req,res)=>{
+    res.render("insert");
 }
-const displaypage=(req,res)=>{
-    res.render("display")
+
+const stuSave=async(req,res)=>{
+    const {rno,nm,sub,fees}=req.body;
+    const student=await stuModel.create({
+        rollno:rno,
+        name:nm,
+        subject:sub,
+        fees:fees
+    })
+    console.log(req.body)
+    res.render("insert");
+}
+const stuDisplay=async(req,res)=>{
+    const student=await stuModel.find();
+    console.log(student);
+    res.render("display",{Data:student});
+}
+const updatepage=async(req,res)=>{
+     const student=await stuModel.find();
+     res.render("update",{Data:student});
+}
+const dataDelete=async(req,res)=>{
+    const {id}=req.query;
+    await stuModel.findByIdAndDelete(id);
+     const student=await stuModel.find();
+     res.render("update",{Data:student});
+}
+const editPage=async(req,res)=>{
+    const {id}=req.query;
+    const stuData=await stuModel.findById(id);
+    console.log(stuData);
+    res.render("editdata",{Data:stuData});
 
 }
-const updatepage=(req,res)=>{
-    res.render("update")
+const editsave=async(req,res)=>{
+    const {id,rollno,name,subject,fees}=req.body;
+    await stuModel.findByIdAndUpdate(id,{
+        rollno:rollno,
+        name:name,
+        subject:subject,
+        fees:fees
+    })
+    const student=await stuModel.find();
+    res.render("update",{Data:student});
 }
-const searchpage=(req,res)=>{
-    res.render("search")
-}
+// const searchPage=(req,res)=>{
+//     res.render("search");
+// }
 module.exports={
     homepage,
-    inserpage,
-    displaypage,
+    insertpage, 
+    stuSave,
+    stuDisplay,
     updatepage,
-    searchpage
+    dataDelete,
+    editPage,
+    editsave,
+    // searchPage
+
 }

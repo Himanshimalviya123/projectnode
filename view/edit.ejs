@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="lightblue">
+    <a href="/">Home</a>
+    <a href="/insert">Insert</a>
+    <a href="/display">Display</a>
+    <a href="/update">Update</a>
+    <a href="/search">Search</a>
+    
+    <hr color="red" size="5px">
+    <h1>student edit data page</h1>
+    <form action="/editsave" method="post">
+        <input type="hidden" value="<%= Data.id %>" name="id">
+    Edit Rollno: <input type="text" value="<%= Data.rollno %>" name="rollno"><br/><br/>
+    Edit Name: <input type="text" value="<%= Data.name %>" name="name"><br/><br/>
+    Edit Subject: <input type="text" value="<%= Data.subject %>" name="subject"><br/><br/>
+    Edit Fees: <input type="text" value="<%= Data.fees %>" name="fees"><br/><br/>
+    <button>Edit save</button>
+    </form>
+
+    <hr color="red" size="5px">
+    www.example.com our node.js project
+    
+</body>
+</html>
