@@ -1,3 +1,4 @@
+const module1 = require("../models/module1");
 const stuModel=require("../models/module1");
 const homepage=(req,res)=>{
     res.render("home");
@@ -50,9 +51,21 @@ const editsave=async(req,res)=>{
     const student=await stuModel.find();
     res.render("update",{Data:student});
 }
-// const searchPage=(req,res)=>{
-//     res.render("search");
+const searchPage=(req,res)=>{
+    const data=[]
+    res.render("search",{Data:data});
+}
+// const searchdata=async(req,res)=>{
+// console.log(req.body);
+// res.send("okkk")
+
 // }
+const searchData=async(req,res)=>{
+const {rno}=req.body;
+const data=await module1.find({rollno:rno})
+res.render("search",{Data:data})
+
+}
 module.exports={
     homepage,
     insertpage, 
@@ -62,6 +75,7 @@ module.exports={
     dataDelete,
     editPage,
     editsave,
-    // searchPage
+    searchPage,
+    searchData
 
 }
