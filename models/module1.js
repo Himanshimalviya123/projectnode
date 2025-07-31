@@ -5,5 +5,4 @@ const stuSchema=new mongoose.Schema({
      subject:String,
      fees:Number
 })
-
 module.exports=mongoose.model("student",stuSchema);

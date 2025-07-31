@@ -11,7 +11,4 @@ route.get("/editdata",stuController.editPage);
 route.get("/search",stuController.searchPage);
 route.post("/editsave",stuController.editsave);
 route.post("/searchdata",stuController.searchData);
-
-
-
 module.exports=route;
