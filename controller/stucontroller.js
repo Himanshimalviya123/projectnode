@@ -17,6 +17,7 @@ const stuSave=async(req,res)=>{
     })
     console.log(req.body)
     res.render("insert");
+    
 }
 const stuDisplay=async(req,res)=>{
     const student=await stuModel.find();
@@ -64,7 +65,6 @@ const searchData=async(req,res)=>{
 const {rno}=req.body;
 const data=await module1.find({rollno:rno})
 res.render("search",{Data:data})
-
 }
 module.exports={
     homepage,
@@ -77,5 +77,4 @@ module.exports={
     editsave,
     searchPage,
     searchData
-
 }
